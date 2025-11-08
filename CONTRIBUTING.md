@@ -202,7 +202,7 @@ Any other relevant information, mockups, or examples.
 
 **Title Format**: `[DOCS] Brief description of documentation issue`
 
-**Example**: `DOCS: Missing installation instructions for PostgreSQL`
+**Example**: `[DOCS] Missing installation instructions for PostgreSQL`
 
 #### Other Issue Types
 
