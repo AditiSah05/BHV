@@ -17,3 +17,7 @@ The system should avoid unnecessary bloat to enable easy installation in healthc
 The front-end should be kept minimal to allow the entire system to be run from a single command (rather than expecting the front-end, backend, and database to be run separately).
 
 The storage of the images could be in a file system with an index to retrieve them easily. The index itself could be in a database to allow easy queries.
+
+## Getting Started
+
+See [Setup & Environment Guide](docs/setup.md) for installation and configuration instructions.
