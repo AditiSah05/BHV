@@ -50,7 +50,7 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```env
-# Security
+# Security (REQUIRED - Generate a new key for production! e.g., python -c "import secrets; print(secrets.token_hex(32))")
 SECRET_KEY=your-secret-key-here-change-in-production
 
 # Database
@@ -90,7 +90,11 @@ BHV/
 
 ## Security Notes
 
-- Change `SECRET_KEY` in production
-- Set `DEBUG=False` in production
-- Configure proper `ALLOWED_HOSTS` for your network
-- Ensure proper file permissions on media directories
+- **Generate a new SECRET_KEY** for production:
+  ```bash
+  python -c "import secrets; print(secrets.token_hex(32))"
+  ```
+- Set `DEBUG=False` in production environments
+- Configure `ALLOWED_HOSTS` with your actual domain/IP addresses
+- Ensure proper file permissions on media directories (755 for directories, 644 for files)
+- Use HTTPS in production deployments
