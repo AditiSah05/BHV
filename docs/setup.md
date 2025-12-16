@@ -99,5 +99,5 @@ BHV/
   ```
 - Set `DEBUG=False` in production environments
 - Configure `ALLOWED_HOSTS` with your actual domain/IP addresses
-- Ensure proper file permissions on media directories (755 for directories, 644 for files)
+- Ensure media directories are writable by the application user, and restrict access for other users
 - Use HTTPS in production deployments
