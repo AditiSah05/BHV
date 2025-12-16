@@ -59,6 +59,9 @@ DB_PATH=./data/bhv.db
 # Media Storage
 MEDIA_ROOT=./media/uploads
 
+# Logging
+LOG_PATH=./logs
+
 # Application
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
