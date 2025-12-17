@@ -47,29 +47,14 @@ pip install -r requirements.txt
 
 ## Environment Configuration
 
-Create a `.env` file in the project root:
+The project uses a `.env` file for configuration. Copy the provided `.env.example` to a new file named `.env` and customize the values for your environment.
 
-```env
-# Security (REQUIRED - Generate a new key for production! e.g., python -c "import secrets; print(secrets.token_hex(32))")
-SECRET_KEY=your-secret-key-here-change-in-production
+**Key variables to configure:**
+- `SECRET_KEY`: **MUST** be changed to a unique, secret value in production
+- `DEBUG`: Should be set to `False` in production
+- `ALLOWED_HOSTS`: Should be configured with your domain/IP in production
 
-# Database
-DB_PATH=./data/bhv.db
-
-# Media Storage
-MEDIA_ROOT=./media/uploads
-
-# Logging
-LOG_PATH=./logs
-
-# Application
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-# Server
-HOST=127.0.0.1
-PORT=8000
-```
+See the comments within `.env.example` for more details on each variable.
 
 ## Directory Structure
 
