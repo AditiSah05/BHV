@@ -23,7 +23,7 @@ The storage of the images could be in a file system with an index to retrieve th
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Web Browser   │◄──►│   Python App     │◄──►│   File System   │
-│  (Minimal UI)   │    │  (Flask/Django)  │    │  (Image Store)  │
+│  (Minimal UI)   │    │  (Flask)         │    │  (Image Store)  │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │
                                 ▼
