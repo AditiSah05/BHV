@@ -175,7 +175,7 @@ CREATE TABLE admin_actions (
 - **Virus Scanning**: Optional integration for uploaded files
 
 ### Data Protection
-- **Database Encryption**: SQLite encryption for sensitive data
+- **Database Encryption**: Planned enhancement using SQLCipher for sensitive data protection
 - **Audit Logging**: Comprehensive action tracking
 - **Privacy Controls**: User consent and data retention policies
 - **Backup Security**: Encrypted backup procedures
