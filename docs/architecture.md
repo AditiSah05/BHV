@@ -111,7 +111,7 @@ CREATE TABLE narratives (
     id INTEGER PRIMARY KEY,
     image_id INTEGER REFERENCES images(id),
     content TEXT,
-    author_type ENUM('patient', 'social_worker') DEFAULT 'patient',
+    author_type TEXT CHECK(author_type IN ('patient', 'social_worker')) DEFAULT 'patient',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
