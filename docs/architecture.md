@@ -69,9 +69,14 @@ media/uploads/
 ### Storage Features
 - **Organized Structure**: User-based directory hierarchy with date organization
 - **Thumbnail Generation**: Automatic thumbnail creation for gallery views
-- **Metadata Preservation**: EXIF data extraction and storage
+- **Raw EXIF Preservation**: Complete EXIF data stored in metadata.json for archival purposes
 - **File Validation**: Image format verification and size limits
 - **Access Control**: Directory-level permissions for security
+
+### Metadata Storage Strategy
+- **Database**: Stores indexed, queryable metadata (file paths, sizes, upload dates, user associations)
+- **metadata.json**: Preserves complete raw EXIF data and technical image properties for archival and potential future analysis
+- **Single Source of Truth**: Database serves as authoritative source for application queries; JSON files provide comprehensive technical backup
 
 ## Metadata Indexing (Database)
 
