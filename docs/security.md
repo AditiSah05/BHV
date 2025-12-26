@@ -55,10 +55,12 @@ PERMANENT_SESSION_LIFETIME = 3600 # ⏰ 1 hour for persistent sessions
 | 🎯 Action | 🧑‍⚕️ Patient | 👩‍⚕️ Social Worker | 👨‍💼 Admin |
 |--------|---------|---------------|-------|
 | 🖼️ Upload own images | ✅ | ❌ | ✅ |
+| 🖼️ Upload image for assigned patient | ❌ | ✅ | ✅ |
 | 👁️ View own images | ✅ | ❌ | ✅ |
+| 👁️ View assigned patient images | ❌ | ✅ | ✅ |
 | ✏️ Edit own narratives | ✅ | ❌ | ✅ |
-| 👥 View assigned patient images | ❌ | ✅ | ✅ |
-| 📝 Add patient narratives | ❌ | ✅ | ✅ |
+| 📝 Add narrative for assigned patient | ❌ | ✅ | ✅ |
+| ✏️ Edit narrative for assigned patient | ❌ | ✅ | ✅ |
 | 🗑️ Delete any content | ❌ | ❌ | ✅ |
 | 👥 Manage users | ❌ | ❌ | ✅ |
 | 📋 View audit logs | ❌ | ❌ | ✅ |
