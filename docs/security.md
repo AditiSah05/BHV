@@ -252,7 +252,7 @@ SECRET_KEY=<generated-256-bit-key>
 DATABASE_ENCRYPTION=True
 AUDIT_LOGGING=True
 HTTPS_ONLY=True
-SECURE_COOKIES=True
+SESSION_COOKIE_SECURE=True
 ```
 
 This security model ensures BHV meets healthcare industry standards while maintaining usability and system performance.
