@@ -27,9 +27,9 @@ BHV implements a **hybrid storage architecture** combining relational database i
 ```
 👤 users (1) ──────── (N) 🖼️ images (1) ──────── (N) 📝 narratives
   │                           │
-  │                           └── 📋 admin_actions (audit trail)
+  │                           └── 📋 audit_logs (comprehensive trail)
   │
-  └── 🔐 admin_actions (user management)
+  └── 🔐 audit_logs (user management)
 ```
 
 ## 📊 Database Storage Model
@@ -93,17 +93,20 @@ BEGIN
 END;
 ```
 
-#### 🔍 Admin Actions Table - **HIPAA Compliance Audit Trail**
+#### 📋 Audit Logs Table - **HIPAA Compliance Audit Trail**
 ```sql
-CREATE TABLE admin_actions (
+CREATE TABLE audit_logs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    admin_id INTEGER NOT NULL REFERENCES users(id),
-    action_type VARCHAR(50) NOT NULL,           -- 'create', 'update', 'delete', 'view'
-    target_type VARCHAR(50) NOT NULL,           -- 'user', 'image', 'narrative'
-    target_id INTEGER NOT NULL,                 -- ID of affected record
-    description TEXT,                           -- Human-readable action description
-    ip_address VARCHAR(45),                     -- Security tracking
-    user_agent TEXT,                            -- Browser/device info
+    user_id INTEGER REFERENCES users(id),      -- Any user (patient, social worker, admin)
+    action VARCHAR(100) NOT NULL,              -- 'create', 'update', 'delete', 'view', 'login'
+    resource_type VARCHAR(50),                 -- 'user', 'image', 'narrative', 'session'
+    resource_id INTEGER,                       -- ID of affected record
+    old_values TEXT,                           -- JSON: previous state for compliance
+    new_values TEXT,                           -- JSON: new state for compliance
+    description TEXT,                          -- Human-readable action description
+    ip_address VARCHAR(45),                    -- Security tracking
+    user_agent TEXT,                           -- Browser/device info
+    session_id VARCHAR(255),                   -- Session correlation
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
@@ -148,7 +151,7 @@ media/
 - **User Isolation**: Each user has dedicated directory structure
 - **Permission Model**: Application-controlled access only
 - **Direct Access Prevention**: No direct web server file serving
-- **Audit Trail**: All file operations logged in admin_actions table
+- **Audit Trail**: All file operations logged in audit_logs table
 
 ## Data Lifecycle Management
 
@@ -179,7 +182,7 @@ media/
 CREATE INDEX idx_images_user_id ON images(user_id);
 CREATE INDEX idx_images_upload_date ON images(upload_date);
 CREATE INDEX idx_narratives_image_id ON narratives(image_id);
-CREATE INDEX idx_admin_actions_timestamp ON admin_actions(timestamp);
+CREATE INDEX idx_audit_logs_timestamp ON audit_logs(timestamp);
 CREATE INDEX idx_users_email ON users(email);
 ```
 
