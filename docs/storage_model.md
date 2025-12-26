@@ -80,9 +80,17 @@ CREATE TABLE narratives (
     author_type TEXT CHECK(author_type IN ('patient', 'social_worker', 'admin')) DEFAULT 'patient',
     author_id INTEGER REFERENCES users(id),     -- Who wrote this narrative
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_active BOOLEAN DEFAULT TRUE              -- Version control support
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Updated via application logic/trigger
 );
+
+-- SQLite trigger for automatic updated_at timestamp
+CREATE TRIGGER update_narratives_timestamp 
+    AFTER UPDATE ON narratives
+    FOR EACH ROW
+    WHEN NEW.updated_at = OLD.updated_at
+BEGIN
+    UPDATE narratives SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
+END;
 ```
 
 #### 🔍 Admin Actions Table - **HIPAA Compliance Audit Trail**
